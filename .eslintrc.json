@@ -17,6 +17,7 @@
         "comma-dangle": "warn",
         "spaced-comment": "warn",
         "prefer-const": "warn",
-        "object-shorthand": "warn"
+        "object-shorthand": "warn",
+        "prefer-arrow-callback": "warn"
     }
 }

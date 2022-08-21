@@ -59,6 +59,10 @@ body {
   border: 1px solid var(--blue-shadow);
 }
 
+#column-cards {
+  width: 100%;
+}
+
 form input::placeholder {
   color: darkgray;
 }
@@ -68,7 +72,7 @@ form input {
   background: none;
   border: none;
   font-size: 16px;
-  color: var(--blue);
+  color: white;
   /* border: 2px solid var(--blue); */
 }
 
@@ -82,7 +86,6 @@ form input:focus {
 
 .to-do-card {
   min-height: 40px;
-  width: 90%;
   border: 2px solid var(--blue);
   border-radius: 5px;
   background-color: var(--blue-shadow);
@@ -95,6 +98,10 @@ form input:focus {
   border: 2px solid white;
 }
 
+#form {
+  width: 100%;
+}
+
 input[type='checkbox'] {
   margin: 10px;
 }
@@ -102,11 +109,11 @@ input[type='checkbox'] {
 .add-task-btn {
   border: none;
   background: none;
-  color: var(--dark-blue);
+  color: var(--blue);
 }
 
 .add-task-btn:hover {
-  color: var(--blue);
+  color: white;
   /* font-weight: bold; */
 }
 
@@ -188,4 +195,9 @@ label {
 input[type='checkbox']:checked {
   background-color: var(--green);
   border: 2px solid white;
+}
+
+.hide {
+  visibility: hidden;
+  position: absolute;
 }
