@@ -15,11 +15,11 @@
         "max-len": "warn",
         "no-unused-vars": "warn",
         "no-trailing-spaces": "warn",
-        "comma-dangle": "warn",
+        "comma-dangle": "off",
         "spaced-comment": "warn",
         "prefer-const": "warn",
         "object-shorthand": "warn",
         "prefer-arrow-callback": "warn",
-        "import/prefer-default-export": "warn"
+        "import/prefer-default-export": "warn",
     }
 }

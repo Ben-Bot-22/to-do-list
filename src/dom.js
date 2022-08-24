@@ -1,4 +1,4 @@
-import createCard from './card';
+import { createCard, removeCard } from './card';
 // import addCardToColumn from './column';
 // import addCardToColumn from './index';
 
@@ -23,6 +23,15 @@ function removeForm() {
   activeForm.clear();
 }
 
+function cardDone(event) {
+  // get column
+  // remove card from column
+  removeCard(
+    event.target.parentNode.getElementsByTagName('label')[0].textContent
+  );
+  event.target.parentNode.parentNode.removeChild(event.target.parentNode);
+}
+
 function createCardDOM(card) {
   //     <div class="to-do-card round">
   //     <input type="checkbox" name="task-0" />
@@ -41,6 +50,7 @@ function createCardDOM(card) {
   // render
   cardDiv.appendChild(checkbox);
   cardDiv.appendChild(title);
+  cardDiv.addEventListener('click', cardDone);
   return cardDiv;
 }
 
@@ -99,6 +109,7 @@ function createCardForm(event) {
   inputTitle.setAttribute('placeholder', 'Task name');
   inputTitle.setAttribute('id', 'card-title');
   inputTitle.required = true;
+  inputTitle.setAttribute('autocomplete', 'off');
   buttonContainer.setAttribute('id', 'card-btns');
   buttonCancel.setAttribute('id', 'card-cancel-btn');
   buttonAdd.setAttribute('type', 'submit');
@@ -114,6 +125,13 @@ function createCardForm(event) {
 
   // focus
   inputTitle.focus();
+  inputTitle.addEventListener('keypress', (e) => {
+    console.log(e.key);
+    if (e.key === 'Enter') {
+      // e.preventDefault();
+      createNewCard();
+    }
+  });
 
   // button event listeners
   buttonAdd.addEventListener('click', createNewCard);

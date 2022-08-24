@@ -12,6 +12,13 @@ class Column {
 
   addCard = (card) => this.cards.push(card);
 
+  removeCard = (cardToRemove) => {
+    const index = this.cards.indexOf(cardToRemove);
+    if (index > -1) {
+      this.cards.splice(index, 1);
+    }
+  };
+
   changeTitle = (newTitle) => {
     this.title = newTitle;
   };
@@ -19,6 +26,11 @@ class Column {
 
 function getColumn(colName) {
   return columns.get(colName);
+}
+
+export function removeCardFromColumn(card, colName) {
+  const col = getColumn(colName);
+  col.removeCard(card);
 }
 
 export function addCardToColumn(card, colName) {
