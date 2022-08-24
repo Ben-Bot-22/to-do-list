@@ -10,6 +10,7 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
+    "ignorePatterns": ["main.js"],
     "rules": {
         "max-len": "warn",
         "no-unused-vars": "warn",
@@ -18,6 +19,7 @@
         "spaced-comment": "warn",
         "prefer-const": "warn",
         "object-shorthand": "warn",
-        "prefer-arrow-callback": "warn"
+        "prefer-arrow-callback": "warn",
+        "import/prefer-default-export": "warn"
     }
 }
