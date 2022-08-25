@@ -25,6 +25,7 @@ export function createCard(title, colName) {
 export function removeCard(title) {
   // get card
   const card = cards.get(title);
+  console.log(card);
   // get col
   const colName = card.colName;
   // remove card from column

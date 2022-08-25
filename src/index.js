@@ -3,21 +3,16 @@ import addColumnToDOM from './dom';
 
 const startColumnName = 'Inbox';
 addColumnToDOM(initColumn(startColumnName));
-const secondColumn = 'Inbox 2';
-addColumnToDOM(initColumn(secondColumn));
+// const secondColumn = 'Inbox 2';
+// addColumnToDOM(initColumn(secondColumn));
 
 // # sourceMappingURL=/dist/app.js.map
 
 /*
 TODO:
 
-EDIT TITLES
-- Change column title with click
-- Edit card by clicking on card
-
-GIT!!
-
 NEW COLUMNS
+- + column button is 100% height
 - Add new column button functionality
 -- List counting Column 2
 
@@ -42,6 +37,7 @@ PRIORITY
 - changing color for different priorities
 
 POLISH
+- Change column title with click
 -- Form add button create task (disabled if no text)
 - view all todos in each project (probably just the title and duedate)
 - expand a single todo to see/edit its details

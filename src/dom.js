@@ -27,7 +27,9 @@ function cardDone(event) {
   // get column
   // remove card from column
   removeCard(
-    event.target.parentNode.getElementsByTagName('label')[0].textContent
+    event.target.parentNode
+      .querySelector('#title-input')
+      .getAttribute('data-title')
   );
   event.target.parentNode.parentNode.removeChild(event.target.parentNode);
 }
@@ -40,17 +42,21 @@ function createCardDOM(card) {
   // create
   const cardDiv = document.createElement('div');
   const checkbox = document.createElement('input');
-  const title = document.createElement('label');
+  const title = document.createElement('input');
   // add attributes
   cardDiv.classList.add('to-do-card');
   cardDiv.classList.add('round');
   checkbox.setAttribute('type', 'checkbox');
+  title.setAttribute('id', 'title-input');
+  title.setAttribute('data-title', card.title);
   // DOM
-  title.innerHTML = card.title;
+  title.value = card.title;
   // render
   cardDiv.appendChild(checkbox);
   cardDiv.appendChild(title);
-  cardDiv.addEventListener('click', cardDone);
+  // event listeners
+  checkbox.addEventListener('click', cardDone);
+  // save input change in card.js
   return cardDiv;
 }
 
@@ -140,15 +146,19 @@ function createCardForm(event) {
 
   // save active form in map
   activeForm.set('card', card);
-  // console.log(buttonContainer);
   activeForm.set('buttonContainer', buttonContainer);
+  // document.querySelector(`[data-column='${dataColumn}'] button:first-of-type`)
   activeForm.set(
     'addTaskButton',
-    document.querySelector(`[data-column='${dataColumn}'] button:first-of-type`)
+    document.querySelector(`[data-column='${dataColumn}'] #add-task`)
   );
 
   // hide create new button (generates form)
   toggleAddTaskButton();
+}
+
+function editTitle(event) {
+  console.log(event.target.innerHTML);
 }
 
 export default function addColumnToDOM(colObject) {
@@ -177,12 +187,14 @@ export default function addColumnToDOM(colObject) {
   titleDiv.classList.add('column-title');
   cardParentDiv.setAttribute('id', 'column-cards');
   addButton.classList.add('add-task-btn');
+  addButton.setAttribute('id', 'add-task');
   // Append
   columnContent.appendChild(parentDiv);
   parentDiv.appendChild(titleDiv);
   parentDiv.appendChild(cardParentDiv);
   parentDiv.appendChild(addButton);
   // Listeners
+  titleDiv.addEventListener('click', editTitle);
   addButton.addEventListener('click', createCardForm);
   addButton.columnName = colObject.title;
 }
