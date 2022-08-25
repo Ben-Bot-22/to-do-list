@@ -39,6 +39,10 @@ export function addCardToColumn(card, colName) {
   column.addCard(card);
 }
 
+export function getColNumber() {
+  return columns.size;
+}
+
 function createColumn(title) {
   const col = new Column(title);
   // addColumnToDOM(col);

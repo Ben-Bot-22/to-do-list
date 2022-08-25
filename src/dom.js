@@ -194,7 +194,7 @@ export default function addColumnToDOM(colObject) {
   parentDiv.appendChild(cardParentDiv);
   parentDiv.appendChild(addButton);
   // Listeners
-  titleDiv.addEventListener('click', editTitle);
+  // titleDiv.addEventListener('click', editTitle);
   addButton.addEventListener('click', createCardForm);
   addButton.columnName = colObject.title;
 }

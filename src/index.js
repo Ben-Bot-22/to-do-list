@@ -1,8 +1,22 @@
-import { initColumns as initColumn } from './column';
+import { initColumns, getColNumber } from './column';
 import addColumnToDOM from './dom';
+// import { initNewColumnButtons } from './add-new-column';
 
+function initNewColumnButtons() {
+  const addColButtons = document.querySelectorAll('.add-column-btn');
+  addColButtons.forEach((btn) => btn.addEventListener('click', addColumn));
+  //   console.log(addColButtons.length);
+}
+
+function addColumn() {
+  // get col number
+  const newColumnName = 'List ' + getColNumber();
+  addColumnToDOM(initColumns(newColumnName));
+}
+
+initNewColumnButtons();
 const startColumnName = 'Inbox';
-addColumnToDOM(initColumn(startColumnName));
+addColumnToDOM(initColumns(startColumnName));
 // const secondColumn = 'Inbox 2';
 // addColumnToDOM(initColumn(secondColumn));
 
@@ -10,13 +24,6 @@ addColumnToDOM(initColumn(startColumnName));
 
 /*
 TODO:
-
-NEW COLUMNS
-- + column button is 100% height
-- Add new column button functionality
--- List counting Column 2
-
-GIT!!
 
 SAVE
 - add some persistence to this todo app using the Web Storage API.
