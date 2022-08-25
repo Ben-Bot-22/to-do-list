@@ -140,10 +140,11 @@ function createCardForm(event) {
 
   // save active form in map
   activeForm.set('card', card);
+  // console.log(buttonContainer);
   activeForm.set('buttonContainer', buttonContainer);
   activeForm.set(
     'addTaskButton',
-    document.querySelector(`[data-column=${dataColumn}] button:first-of-type`)
+    document.querySelector(`[data-column='${dataColumn}'] button:first-of-type`)
   );
 
   // hide create new button (generates form)

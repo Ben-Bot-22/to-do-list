@@ -45,8 +45,15 @@ body {
   align-content: center;
 }
 
+@media (max-width: 375px) {
+  .column-content {
+    flex-direction: column;
+  }
+}
+
 .column {
   width: 200px;
+  height: 100%;
   padding: 5px 5px;
   border-radius: 5px;
   display: flex;

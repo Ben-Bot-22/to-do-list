@@ -3,9 +3,8 @@ import addColumnToDOM from './dom';
 
 const startColumnName = 'Inbox';
 addColumnToDOM(initColumn(startColumnName));
-
-// const test = 'Inbox 2';
-// addColumnToDOM(initColumn(test));
+const secondColumn = 'Inbox 2';
+addColumnToDOM(initColumn(secondColumn));
 
 // # sourceMappingURL=/dist/app.js.map
 
@@ -16,14 +15,13 @@ EDIT TITLES
 - Change column title with click
 - Edit card by clicking on card
 
-DEBUG COLUMNS (2 column layout):
-- multiline columns
-- responsive design - hide first column
-- taskButton wonky with 2 columns
+GIT!!
 
 NEW COLUMNS
 - Add new column button functionality
--- Anonomous list counting (JS)
+-- List counting Column 2
+
+GIT!!
 
 SAVE
 - add some persistence to this todo app using the Web Storage API.
@@ -48,6 +46,9 @@ POLISH
 - view all todos in each project (probably just the title and duedate)
 - expand a single todo to see/edit its details
 - delete a todo
+NAV
+- keep left column on screen - focus on 1 column
+-- scroll through with arrow keys
 
 - move columns
 - date-fns for formatting and manipulating dates and times.
