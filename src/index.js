@@ -1,44 +1,53 @@
 import { initColumns, getColNumber } from './column';
-import addColumnToDOM from './dom';
+import { addColumnToDOM, loadCard } from './dom';
+import { getColumnData } from './data';
+// import { createCard } from './card';
 // import { initNewColumnButtons } from './add-new-column';
 
 function initNewColumnButtons() {
   const addColButtons = document.querySelectorAll('.add-column-btn');
   addColButtons.forEach((btn) => btn.addEventListener('click', addColumn));
-  //   console.log(addColButtons.length);
+  // console.log(addColButtons.length);
 }
 
+// add a new column when click on DOM button
 function addColumn() {
   // get col number
   const newColumnName = 'List ' + getColNumber();
   addColumnToDOM(initColumns(newColumnName));
 }
 
-initNewColumnButtons();
-const startColumnName = 'Inbox';
-addColumnToDOM(initColumns(startColumnName));
-// const secondColumn = 'Inbox 2';
-// addColumnToDOM(initColumn(secondColumn));
+function loadData() {
+  const data = getColumnData();
+  console.log(JSON.stringify(data));
+  if (data) {
+    // for each column, create column
+    for (const column in data) {
+      addColumnToDOM(initColumns(column, false));
+      console.log(data[column]['cards']);
+      data[column]['cards'].forEach((card) => {
+        console.log(card.title + ', ' + card.colName);
+        // create card
+        loadCard(card.title, card.colName);
+      });
+    }
+  } else {
+    const startColumnName = 'Inbox';
+    addColumnToDOM(initColumns(startColumnName));
+  }
+}
 
-// # sourceMappingURL=/dist/app.js.map
+// localStorage.clear();
+// addColumnToDOM(initColumns('T1'));
+// addColumnToDOM(initColumns('title_2'));
+loadData();
+initNewColumnButtons();
 
 /*
 TODO:
 
-SAVE
-- add some persistence to this todo app using the Web Storage API.
-- localStorage (docs here) allows you to save data on the user’s computer.
-- Set up a function that saves the projects (and todos) to localStorage
-every time a new project (or todo) is created, and another function
-that looks for that data in localStorage when your app is first loaded.
-
--- Make sure your app doesn’t crash if the data you may want retrieve isn’t there!
--- localStorage uses JSON to send and store data, and when you retrieve the data,
-it will also be in JSON format. Keep in mind you cannot store functions in JSON,
-so you’ll have to figure out how to add methods back to your object properties
-once you fetch them.
-
 **Extended**
+
 PRIORITY
 - Expand new to do form w/ priority
 - changing color for different priorities
@@ -49,6 +58,7 @@ POLISH
 - view all todos in each project (probably just the title and duedate)
 - expand a single todo to see/edit its details
 - delete a todo
+
 NAV
 - keep left column on screen - focus on 1 column
 -- scroll through with arrow keys

@@ -1,4 +1,5 @@
 // import addColumnToDOM from './dom';
+import { saveColumnData, getColumnData } from './data';
 
 let columns = new Map();
 
@@ -31,12 +32,15 @@ function getColumn(colName) {
 export function removeCardFromColumn(card, colName) {
   const col = getColumn(colName);
   col.removeCard(card);
+  saveColumnData(columns);
 }
 
 export function addCardToColumn(card, colName) {
   // get column
   const column = getColumn(colName);
+  // console.log(column);
   column.addCard(card);
+  saveColumnData(columns);
 }
 
 export function getColNumber() {
@@ -45,12 +49,12 @@ export function getColNumber() {
 
 function createColumn(title) {
   const col = new Column(title);
-  // addColumnToDOM(col);
   return col;
 }
 
-export function initColumns(startColumnName) {
+export function initColumns(startColumnName, save = true) {
   const col = createColumn(startColumnName);
   columns.set(startColumnName, col);
+  if (save) saveColumnData(columns);
   return col;
 }

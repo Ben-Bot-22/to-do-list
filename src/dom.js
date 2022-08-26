@@ -78,6 +78,19 @@ function createNewCard(event) {
   removeForm();
 }
 
+export function loadCard(title, colName) {
+  // get parent node matching column name
+  const dataColumn = document.querySelector(`[data-column='${colName}']`);
+  console.log(dataColumn);
+  const card = createCard(title, colName);
+  // add card to HTML
+  const cardDOM = createCardDOM(card);
+  const children = dataColumn.getElementsByTagName('div');
+  // 1st child is name of column, second child is container for cards,
+  // last child is add task button
+  children[1].appendChild(cardDOM);
+}
+
 function cancelNewCard() {
   removeForm();
 }
@@ -132,7 +145,6 @@ function createCardForm(event) {
   // focus
   inputTitle.focus();
   inputTitle.addEventListener('keypress', (e) => {
-    console.log(e.key);
     if (e.key === 'Enter') {
       // e.preventDefault();
       createNewCard();
@@ -161,7 +173,7 @@ function editTitle(event) {
   console.log(event.target.innerHTML);
 }
 
-export default function addColumnToDOM(colObject) {
+export function addColumnToDOM(colObject) {
   // <div data-column="0" class="column">
   // <div class="column-title">Inbox</div>
   // <div id="column-cards">
